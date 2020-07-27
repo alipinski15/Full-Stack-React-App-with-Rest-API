@@ -17,8 +17,10 @@ export default class CourseDetail extends Component {
     })
   }
 
+
+
   render() {
-    console.log(this.state.course.user.firstName)
+    console.log(this.state.course.user)
     return (
       <div>
         <div className="actions--bar">
