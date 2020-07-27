@@ -5,16 +5,14 @@ import Markdown from 'react-markdown';
 export default class CourseDetail extends Component {
 
   state = {
-    course: [],
-    firstName: []
+    course: []
   }
   
   async componentDidMount() {
     const { context } = this.props;
     context.data.courseDetail(this.props.match.params.id).then(response => {
       this.setState({
-        course: response,
-        firstName: response.firstName
+        course: response
       })
     })
   }
@@ -33,7 +31,7 @@ export default class CourseDetail extends Component {
             <div className="course--header">
               <h4 className="course--label">Course</h4>
               <h3 className="course--title">{this.state.course.title}</h3>
-              <p>By {this.state.firstName}</p>
+              <p>By {this.state.course.firstName}</p>
             </div>
             <div className="course--description">
               <Markdown source={this.state.course.description} />
