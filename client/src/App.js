@@ -13,6 +13,7 @@ import UserSignIn from './components/UserSignIn';
 import UserSignOut from './components/UserSignOut';
 import Authenticated from './components/Authenticated';
 import CourseDetail from './components/CourseDetail';
+import CreateCourse from './components/CreateCourse';
 import NotFound from './components/NotFound';
 import Courses from './components/Courses'
 import withContext from './Context';
@@ -26,6 +27,7 @@ const UserSignInWithContext = withContext(UserSignIn);
 const UserSignOutWithContext = withContext(UserSignOut);
 const CoursesWithContext = withContext(Courses);
 const CourseDetailWithContext = withContext(CourseDetail);
+const CreateCourseWithContext = withContext(CreateCourse);
 
 
 export default () => (
@@ -36,6 +38,7 @@ export default () => (
       <Switch>
         <Route exact path="/" component={CoursesWithContext} />
         <Route path='/courses/:id' component={CourseDetailWithContext} />
+        <PrivateRoute path="/courses/create" component={CreateCourseWithContext} />
         <PrivateRoute path="/authenticated" component={AuthWithContext} />
         <Route path="/signin" component={UserSignInWithContext} />
         <Route path="/signup" component={UserSignUpWithContext} />
