@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Markdown from 'react-markdown';
-
+import { Link } from 'react-router-dom';
 
 export default class CourseDetail extends Component {
 
@@ -10,17 +10,22 @@ export default class CourseDetail extends Component {
     estimatedTime: '',
     materialsNeeded: '',
     user: '',
+    authenticatedUser: '',
+    courseId: ''
   }
   
   async componentDidMount() {
     const { context } = this.props;
-    context.data.courseDetail(this.props.match.params.id).then(response => {
+    const { id } = this.props.match.params;
+    context.data.courseDetail(id).then(response => {
       this.setState({
         title: response.title,
         description: response.description,
         estimatedTime: response.estimatedTime,
         materialsNeeded: response.materialsNeeded,
-        user: response.user
+        user: response.user,
+        authenticatedUser: context.authenticatedUser,
+        courseId: id
       })
     })
   }
@@ -28,21 +33,42 @@ export default class CourseDetail extends Component {
 
 
   render() {
+    const {
+      title,
+      courseId,
+      authenticatedUser
+    } = this.state
+
     return (
       <div>
         <div className="actions--bar">
           <div className="bounds">
-            <div className="grid-100"><span><a className="button" href="update-course.html">Update Course</a><a className="button" href="#">Delete Course</a></span><a
-                className="button button-secondary" href="/">Return to List</a></div>
+            <div className="grid-100">
+            <span>
+                {authenticatedUser ? (
+                    <Fragment>
+                      <Link
+                        className="button"
+                        to={`/courses/${courseId}/update`}>
+                        Update Course
+                      </Link>
+                      <Link
+                        className="button"
+                        to={`/courses/delete/${courseId}`}>
+                        Delete Course
+                      </Link>
+                    </Fragment>
+                  ) : (<hr />)}
+              </span>
+              <a className="button button-secondary" href="/">Return to List</a>
+            </div>
           </div>
-            {/* {this.authenitcated()}
-            </div> */}
         </div>
         <div className="bounds course--detail">
           <div className="grid-66">
             <div className="course--header">
               <h4 className="course--label">Course</h4>
-              <h3 className="course--title">{this.state.title}</h3>
+              <h3 className="course--title">{title}</h3>
               <p>By {this.state.user.firstName} {this.state.user.lastName}</p>
             </div>
             <div className="course--description">

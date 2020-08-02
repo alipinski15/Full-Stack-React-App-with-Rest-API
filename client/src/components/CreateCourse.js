@@ -63,36 +63,36 @@ export default class CreateCourse extends Component {
                       className="course--description" />
                   </div> 
                 </div>
-                <div className="grid-25 grid-right">
-                  <div className="course--stats">
-                    <ul className="course--stats--list">
-                      <li className="course--stats--list--item">
-                        <h4>Estimated Time</h4>
-                        <div>
-                          <input 
-                            id="estimatedTime" 
-                            name="estimatedTime" 
-                            type="text"
-                            value={estimatedTime} 
-                            onChange={this.change} 
-                            className="course--time--input"                              
-                            placeholder="Hours" />
-                        </div>
-                      </li>
-                      <li className="course--stats--list--item">
-                        <h4>Materials Needed</h4>
-                        <div>
-                          <textarea
-                            id="materialsNeeded" 
-                            name="materialsNeeded"
-                            value={materialsNeeded}
-                            onChange={this.change} 
-                            placeholder="List materials..." 
-                          ></textarea>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
+               </div> 
+              <div className="grid-25 grid-right">
+                <div className="course--stats">
+                  <ul className="course--stats--list">
+                    <li className="course--stats--list--item">
+                      <h4>Estimated Time</h4>
+                      <div>
+                        <input 
+                          id="estimatedTime" 
+                          name="estimatedTime" 
+                          type="text"
+                          value={estimatedTime} 
+                          onChange={this.change} 
+                          className="course--time--input"                              
+                          placeholder="Hours" />
+                      </div>
+                    </li>
+                    <li className="course--stats--list--item">
+                      <h4>Materials Needed</h4>
+                      <div>
+                        <textarea
+                          id="materialsNeeded" 
+                          name="materialsNeeded"
+                          value={materialsNeeded}
+                          onChange={this.change} 
+                          placeholder="List materials..." 
+                        ></textarea>
+                      </div>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </Fragment>
