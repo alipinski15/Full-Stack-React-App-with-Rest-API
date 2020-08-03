@@ -42,12 +42,14 @@ export class Provider extends Component {
     const user = await this.data.getUser(emailAddress, password);
     if (user !== null) {
       user.password = password;
+      user.emailAddress = user.Email;
       this.setState(() => {
         return {
           authenticatedUser: user,
         };
       });
       Cookies.set('authenticatedUser', JSON.stringify(user), { expires: 1 });
+      console.log(user)
     }
     return user;
   } 

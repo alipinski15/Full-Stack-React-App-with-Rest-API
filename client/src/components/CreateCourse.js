@@ -14,7 +14,7 @@ export default class CreateCourse extends Component {
     description:'',
     estimatedTime:'',
     materialsNeeded:'',
-    user: '',
+    userId: '',
     name: '',
     errors: [],
   }
@@ -23,7 +23,7 @@ export default class CreateCourse extends Component {
     const { context } = this.props;
     this.setState(() => {
       return {
-        user: context.authenticatedUser,
+        userId: context.authenticatedUser.Id,
         name: context.authenticatedUser.Name
       }
     })
@@ -37,7 +37,7 @@ export default class CreateCourse extends Component {
       materialsNeeded,
       errors,
     } = this.state;
-
+    
     return(
       <div className="bounds course--detail">
         <h1>Create Course</h1>
@@ -131,7 +131,7 @@ export default class CreateCourse extends Component {
       description,
       estimatedTime,
       materialsNeeded,
-      user
+      userId
     } = this.state;
 
     const course = {
@@ -139,7 +139,7 @@ export default class CreateCourse extends Component {
       description,
       estimatedTime,
       materialsNeeded,
-      user
+      userId
     };
     console.log(course)
     context.data.createCourse(course, emailAddress, password).then( errors => {
