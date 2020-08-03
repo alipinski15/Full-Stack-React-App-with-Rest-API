@@ -42,7 +42,7 @@ export default class CourseDetail extends Component {
       courseId,
       authenticatedUser
     } = this.state
-    console.log(this.state.title)
+    
     return (
       <div>
         <div className="actions--bar">
