@@ -58,6 +58,7 @@ export default class CourseDetail extends Component {
                       </Link>
                       <Link
                         className="button"
+                        onClick={this.deleteCourse}
                         to={`/courses/delete/${courseId}`}>
                         Delete Course
                       </Link>
@@ -99,4 +100,23 @@ export default class CourseDetail extends Component {
       </div>
     )
   }
-}
+
+  deleteCourse = () => {
+    const { context } = this.props;
+    const { emailAddress, password } = context.authenticatedUser;
+    const courseId = this.props.match.params.id;
+
+    context.data.deleteCourse(courseId, emailAddress, password)
+    .then(errors => {
+      if (errors && errors.length > 0){
+        this.setState({ errors });
+      } else {
+        this.props.history.push('/')
+      }
+      })
+    .catch( err => {
+      console.log(err);
+      this.props.history.push('/error');
+    });
+  } 
+} 

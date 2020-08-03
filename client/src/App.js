@@ -2,7 +2,8 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Switch
+  Switch,
+  Redirect
 } from 'react-router-dom';
 
 
@@ -11,7 +12,6 @@ import Header from './components/Header'
 import UserSignUp from './components/UserSignUp';
 import UserSignIn from './components/UserSignIn';
 import UserSignOut from './components/UserSignOut';
-// import Authenticated from './components/Authenticated';
 import CourseDetail from './components/CourseDetail';
 import CreateCourse from './components/CreateCourse';
 import UpdateCourse from './components/UpdateCourse';
@@ -19,10 +19,10 @@ import NotFound from './components/NotFound';
 import Courses from './components/Courses'
 import withContext from './Context';
 import PrivateRoute  from './PrivateRoute';
+import UnhandleError from './components/UnhandleError'
 
 
 const HeaderWithContext = withContext(Header);
-// const AuthWithContext = withContext(Authenticated);
 const UserSignUpWithContext = withContext(UserSignUp);
 const UserSignInWithContext = withContext(UserSignIn);
 const UserSignOutWithContext = withContext(UserSignOut);
@@ -38,13 +38,15 @@ export default () => (
       <HeaderWithContext />
 
       <Switch>
-        <Route exact path="/" component={CoursesWithContext} />
+        <Route exact path="/" render={ () => <Redirect to="/courses"/> } />
+        <Route exact path="/courses" component={CoursesWithContext} />
         <PrivateRoute path="/courses/create" component={CreateCourseWithContext} />
         <PrivateRoute path="/courses/:id/update" component={UpdateCourseWithContext} />
         <Route path="/courses/:id" component={CourseDetailWithContext} />
         <Route path="/signin" component={UserSignInWithContext} />
         <Route path="/signup" component={UserSignUpWithContext} />
         <Route path="/signout" component={UserSignOutWithContext} />
+        <Route path="/error" component={UnhandleError} />
         <Route component={NotFound} />
       </Switch>
     </div>
