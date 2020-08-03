@@ -30,7 +30,6 @@ export default class CreateCourse extends Component {
   }
 
   render() {
-    const { context } = this.props;
     const {
       title,
       description,
@@ -131,6 +130,7 @@ export default class CreateCourse extends Component {
       description,
       estimatedTime,
       materialsNeeded,
+      userId
     } = this.state;
 
     const course = {
@@ -138,6 +138,7 @@ export default class CreateCourse extends Component {
       description,
       estimatedTime,
       materialsNeeded,
+      userId
     };
     console.log(course)
     context.data.createCourse(course, emailAddress, password).then( errors => {
@@ -145,7 +146,7 @@ export default class CreateCourse extends Component {
         this.setState({ errors });
       } else {
         
-        this.props.history.push('/')
+        this.props.history.push('/courses')
       }
     })
     .catch( err => {
