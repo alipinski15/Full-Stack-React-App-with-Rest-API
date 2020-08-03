@@ -14,7 +14,17 @@ export default class CreateCourse extends Component {
     description:'',
     estimatedTime:'',
     materialsNeeded:'',
+    userId: '',
     errors: [],
+  }
+
+  componentDidMount() {
+    const { context } = this.props;
+    this.setState(() => {
+      return {
+        userId: context.authenticatedUser.Id,
+      }
+    })
   }
 
   render() {
@@ -26,7 +36,6 @@ export default class CreateCourse extends Component {
       materialsNeeded,
       errors,
     } = this.state;
-
     return(
       <div className="bounds course--detail">
         <h1>Create Course</h1>
@@ -114,8 +123,7 @@ export default class CreateCourse extends Component {
 
   submit = () => {
     const { context } = this.props;
-    const { emailAddress, password, id } = context.authenticatedUser;
-    const userId = id;
+    const { emailAddress, password } = context.authenticatedUser;
     const {
       title,
       description,
@@ -128,12 +136,13 @@ export default class CreateCourse extends Component {
       description,
       estimatedTime,
       materialsNeeded,
-      userId
     };
+    console.log(course)
     context.data.createCourse(course, emailAddress, password).then( errors => {
       if (errors && errors.length > 0){
         this.setState({ errors });
       } else {
+        
         this.props.history.push('/')
       }
     })
