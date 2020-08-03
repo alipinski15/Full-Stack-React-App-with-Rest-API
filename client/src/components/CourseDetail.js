@@ -3,16 +3,20 @@ import Markdown from 'react-markdown';
 import { Link } from 'react-router-dom';
 
 export default class CourseDetail extends Component {
-
-  state = {
-    title: '',
-    description: '',
-    estimatedTime: '',
-    materialsNeeded: '',
-    user: '',
-    authenticatedUser: '',
-    courseId: ''
+  
+  constructor(props) {
+    super(props)
+    this.state = {
+      title: '',
+      description: '',
+      estimatedTime: '',
+      materialsNeeded: '',
+      user: '',
+      authenticatedUser: '',
+      courseId: ''
+    }
   }
+  
   
   async componentDidMount() {
     const { context } = this.props;
@@ -38,7 +42,7 @@ export default class CourseDetail extends Component {
       courseId,
       authenticatedUser
     } = this.state
-
+    console.log(this.state.title)
     return (
       <div>
         <div className="actions--bar">

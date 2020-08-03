@@ -6,14 +6,16 @@ import Form from './Form';
 
 
 export default class UpdateCourse extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       title: '',
       description: '',
       estimatedTime: '',
       materialsNeeded: '',
       user: '',
+      courseId: '',
+      userId: '',
       errors: []
     }
   }
@@ -28,7 +30,9 @@ export default class UpdateCourse extends Component {
           description: course.description,
           estimatedTime: course.estimatedTime,
           materialsNeeded: course.materialsNeeded,
-          user: course.User
+          user: context.authenticatedUser,
+          courseId: course.id,
+          userId: course.userId
         });
     })
     .catch((err) => {
@@ -46,7 +50,7 @@ export default class UpdateCourse extends Component {
     materialsNeeded,
     errors
     } = this.state;
-    console.log(this.state)
+    
     return(
       <div className="bounds course--detail">
         <h1>Update Course</h1>
@@ -70,7 +74,7 @@ export default class UpdateCourse extends Component {
                       className="input-title course--title--input" 
                       placeholder="Course title..." />
                   </div>
-                  <p>By {context.authenticatedUser.firstName} {context.authenticatedUser.lastName}</p>
+                  <p>By {context.authenticatedUser.Name}</p>
                 </div>
                 <div className="course--description">
                   <div>
@@ -134,8 +138,7 @@ export default class UpdateCourse extends Component {
 
   submit = () => {
     const { context } = this.props;
-    const { emailAddress, password, id } = context.authenticatedUser;
-    const userId = id;
+    const { emailAddress, password, } = context.authenticatedUser;
     const {
       title,
       description,
@@ -143,18 +146,18 @@ export default class UpdateCourse extends Component {
       materialsNeeded,
     } = this.state;
 
+    const courseId = this.props.match.params.id;
     const course = {
       title,
       description,
       estimatedTime,
       materialsNeeded,
-      userId
     };
-    context.data.updateCourse(course, emailAddress, password).then( errors => {
+    context.data.updateCourse(courseId, course, emailAddress, password).then( errors => {
       if (errors && errors.length > 0){
         this.setState({ errors });
       } else {
-        this.props.history.push('/')
+        this.props.history.push('/courses/ + courseId')
       }
     })
     .catch( err => {
