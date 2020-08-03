@@ -15,6 +15,7 @@ export default class CreateCourse extends Component {
     estimatedTime:'',
     materialsNeeded:'',
     userId: '',
+    name: '',
     errors: [],
   }
 
@@ -23,6 +24,7 @@ export default class CreateCourse extends Component {
     this.setState(() => {
       return {
         userId: context.authenticatedUser.Id,
+        name: context.authenticatedUser.Name
       }
     })
   }
@@ -59,7 +61,7 @@ export default class CreateCourse extends Component {
                       className="input-title course--title--input" 
                       placeholder="Course title..." />
                   </div>
-                  <p>By {context.authenticatedUser.Name}</p>
+                  <p>By {this.state.name}</p>
                 </div>
                 <div className="course--description">
                   <div>
