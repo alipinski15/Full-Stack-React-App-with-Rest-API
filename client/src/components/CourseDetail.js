@@ -110,20 +110,24 @@ export default class CourseDetail extends Component {
 
   deleteCourse = () => {
     const { context } = this.props;
-    const { emailAddress, password } = context.authenticatedUser;
     const courseId = this.props.match.params.id;
 
-    context.data.deleteCourse(courseId, emailAddress, password)
-    .then(errors => {
-      if (errors && errors.length > 0){
-        this.setState({ errors });
-      } else {
-        this.props.history.push('/forbidden')
-      }
-      })
-    .catch( err => {
-      console.log(err);
-      this.props.history.push('/error');
-    });
+    if (context.authenticatedUser) {
+      const { emailAddress, password } = context.authenticatedUser;
+      context.data.deleteCourse(courseId, emailAddress, password)
+      .then(errors => {
+        if (errors && errors.length > 0){
+          this.setState({ errors });
+        } else {
+          this.props.history.push('/forbidden')
+        } 
+        })
+      .catch( err => {
+        console.log(err);
+        this.props.history.push('/error');
+      });
+    } else {
+      this.props.history.push('/')
+    }
   } 
 } 

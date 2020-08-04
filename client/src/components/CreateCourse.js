@@ -141,7 +141,7 @@ export default class CreateCourse extends Component {
       materialsNeeded,
       userId
     };
-    console.log(course)
+    
     context.data.createCourse(course, emailAddress, password).then( errors => {
       if (errors && errors.length > 0){
         this.setState({ errors });
