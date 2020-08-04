@@ -45,7 +45,8 @@ export default class CourseDetail extends Component {
     const {
       title,
       courseId,
-      authenticatedUser
+      authenticatedUser,
+      user
     } = this.state
     
     return (
@@ -54,7 +55,7 @@ export default class CourseDetail extends Component {
           <div className="bounds">
             <div className="grid-100">
             <span>
-                {authenticatedUser ? (
+                {authenticatedUser ? ( authenticatedUser.emailAddress === user.emailAddress ? (
                     <Fragment>
                       <Link
                         className="button"
@@ -68,7 +69,12 @@ export default class CourseDetail extends Component {
                         Delete Course
                       </Link>
                     </Fragment>
-                  ) : (<hr />)}
+                  ) : (
+                    <hr />
+                  )
+                ) : (
+                  <hr />
+                )}
               </span>
               <a className="button button-secondary" href="/">Return to List</a>
             </div>
@@ -119,7 +125,7 @@ export default class CourseDetail extends Component {
         if (errors && errors.length > 0){
           this.setState({ errors });
         } else {
-          this.props.history.push('/forbidden')
+          this.props.history.push('/')
         } 
         })
       .catch( err => {
@@ -127,7 +133,7 @@ export default class CourseDetail extends Component {
         this.props.history.push('/error');
       });
     } else {
-      this.props.history.push('/')
+      this.props.history.push('/forbidden')
     }
   } 
 } 
