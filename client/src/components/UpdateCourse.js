@@ -155,7 +155,7 @@ export default class UpdateCourse extends Component {
       materialsNeeded,
       user
     };
-    console.log(course)
+    
     context.data.updateCourse(courseId, course, emailAddress, password).then( errors => {
       if (errors && errors.length > 0){
         this.setState({ errors });

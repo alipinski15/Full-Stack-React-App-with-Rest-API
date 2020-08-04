@@ -90,7 +90,9 @@ export default class CourseDetail extends Component {
                 <li className="course--stats--list--item">
                   <h4>Materials Needed</h4>
                   <ul>
-                    <Markdown source={this.state.materialsNeeded} />
+                    <li>
+                      <Markdown source={this.state.materialsNeeded} />
+                    </li>
                   </ul>
                 </li>
               </ul>
