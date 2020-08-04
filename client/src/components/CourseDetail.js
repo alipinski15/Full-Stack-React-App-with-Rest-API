@@ -21,7 +21,8 @@ export default class CourseDetail extends Component {
   async componentDidMount() {
     const { context } = this.props;
     const { id } = this.props.match.params;
-    context.data.courseDetail(id).then(response => {
+    context.data.courseDetail(id)
+    .then(response => {
       this.setState({
         title: response.title,
         description: response.description,
@@ -32,6 +33,10 @@ export default class CourseDetail extends Component {
         courseId: id
       })
     })
+    .catch((err) => {
+      console.log(err);
+      this.props.history.push("/notfound");
+    });
   }
 
 
@@ -113,7 +118,7 @@ export default class CourseDetail extends Component {
       if (errors && errors.length > 0){
         this.setState({ errors });
       } else {
-        this.props.history.push('/')
+        this.props.history.push('/forbidden')
       }
       })
     .catch( err => {

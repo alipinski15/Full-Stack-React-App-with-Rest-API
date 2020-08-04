@@ -20,6 +20,7 @@ import Courses from './components/Courses'
 import withContext from './Context';
 import PrivateRoute  from './PrivateRoute';
 import UnhandleError from './components/UnhandleError'
+import Forbidden from './components/Forbidden'
 
 
 const HeaderWithContext = withContext(Header);
@@ -47,7 +48,8 @@ export default () => (
         <Route path="/signup" component={UserSignUpWithContext} />
         <Route path="/signout" component={UserSignOutWithContext} />
         <Route path="/error" component={UnhandleError} />
-        <Route component={NotFound} />
+        <Route path='/forbidden' component={Forbidden} />
+        <Route path='/notfound' component={NotFound} />
       </Switch>
     </div>
   </Router>

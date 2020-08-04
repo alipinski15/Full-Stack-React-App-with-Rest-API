@@ -37,7 +37,7 @@ export default class UpdateCourse extends Component {
     })
     .catch((err) => {
       console.log(err);
-      this.props.history.push("/error");
+      this.props.history.push("/notfound");
     });
   }
 
@@ -144,6 +144,7 @@ export default class UpdateCourse extends Component {
       user,
       description,
       estimatedTime,
+      userId,
       materialsNeeded,
     } = this.state;
 
@@ -153,6 +154,7 @@ export default class UpdateCourse extends Component {
       description,
       estimatedTime,
       materialsNeeded,
+      userId,
       user
     };
     
@@ -160,7 +162,7 @@ export default class UpdateCourse extends Component {
       if (errors && errors.length > 0){
         this.setState({ errors });
       } else {
-        this.props.history.push(`/courses/${courseId}`)
+        this.props.history.push('/forbidden')
       }
     })
     .catch( err => {
