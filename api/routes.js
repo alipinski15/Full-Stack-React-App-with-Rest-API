@@ -217,7 +217,15 @@ router.post('/courses', [
  * Allows authorized user to update a course.
  */
 
-router.put('/courses/:id', authenticateUser, asyncHandler(async(req, res) => {
+router.put('/courses/:id', [
+  check('title')
+    .exists({ checkNull: true, checkFalsy: true })
+    .withMessage('Please provide a "Title"'),
+  check('description')
+    .exists({ checkNull: true, checkFalsy: true })
+    .withMessage('Please provide a "Description"'),
+], authenticateUser, asyncHandler(async(req, res) => {
+  const errors = validationResult(req);
   const user = req.currentUser.dataValues.id;
   const course = await Course.findByPk(req.params.id, {
     attributes: {
@@ -228,13 +236,14 @@ router.put('/courses/:id', authenticateUser, asyncHandler(async(req, res) => {
       as: 'user'
     }
   })
-  if(course) {
+  if(course && !errors.isEmpty()) {
     if(course.dataValues.userId === user) {
         const updated = await course.update(req.body);
         if(updated) {
           res.status(204).end();
         } else {
-          res.status(400).json({ message: "Please enter data to be Updated"})
+          const errorMessages = errors.array().map(error => error.msg);
+          res.status(400).json({ errors: errorMessages });
         }
     } else {
       res.status(403).json({ message: "You are not Authorized" })

@@ -158,20 +158,26 @@ export default class UpdateCourse extends Component {
       user
     };
     
-    context.data.updateCourse(courseId, course, emailAddress, password).then( errors => {
-      if (errors && errors.length > 0){
-        this.setState({ errors });
-      } else {
-        this.props.history.push('/forbidden')
-      }
-    })
-    .catch( err => {
-      console.log(err);
-      this.props.history.push('/error');
-    });
+    if (context.authenticatedUser) {
+      context.data.updateCourse(courseId, course, emailAddress, password).then( errors => {
+        if (errors && errors.length > 0){
+          this.setState({ errors });
+        } else {
+          this.props.history.push(`/courses/${courseId}`)
+        }
+      })
+      .catch( err => {
+        console.log(err);
+        this.props.history.push('/error');
+      });
+    } else {
+      this.props.history.push('/forbidden')
+    }
   }
+    
 
   cancel = () => {
-    this.props.history.push('/');
+    const courseId = this.props.match.params.id;
+    this.props.history.push(`/courses/${courseId}`);
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link }from 'react-router-dom';
 
-const UnhandleError = () => {
+const UnhandledError = () => {
   return(
     <div className="bounds">
       <h1>Error</h1>
@@ -12,4 +12,5 @@ const UnhandleError = () => {
     </div>
   )
 }
-export default UnhandleError;
+
+export default UnhandledError;

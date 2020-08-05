@@ -146,7 +146,6 @@ export default class CreateCourse extends Component {
       if (errors && errors.length > 0){
         this.setState({ errors });
       } else {
-        
         this.props.history.push('/')
       }
     })
