@@ -138,7 +138,7 @@ export default class UpdateCourse extends Component {
 
   submit = () => {
     const { context } = this.props;
-    const { emailAddress, password, } = context.authenticatedUser;
+    const { emailAddress, password } = context.authenticatedUser;
     const {
       title,
       user,
@@ -157,23 +157,21 @@ export default class UpdateCourse extends Component {
       userId,
       user
     };
-    
-    if (context.authenticatedUser) {
-      context.data.updateCourse(courseId, course, emailAddress, password).then( errors => {
-        if (errors && errors.length > 0){
-          this.setState({ errors });
-        } else {
-          this.props.history.push(`/courses/${courseId}`)
-        }
+
+    context.data.updateCourse(courseId, course, emailAddress, password)
+    .then( errors => {
+      if (errors && errors.length > 0){
+        this.setState({ errors });
+      } else {
+        this.props.history.push(`/courses/${courseId}`)
+      }
       })
-      .catch( err => {
-        console.log(err);
-        this.props.history.push('/error');
-      });
-    } else {
-      this.props.history.push('/forbidden')
-    }
+    .catch( err => {
+      console.log(err);
+      this.props.history.push('/error');
+    });
   }
+  
     
 
   cancel = () => {
