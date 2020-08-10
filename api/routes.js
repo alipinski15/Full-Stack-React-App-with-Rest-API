@@ -236,21 +236,22 @@ router.put('/courses/:id', [
       as: 'user'
     }
   })
-  if(course && !errors.isEmpty()) {
+  if (!errors.isEmpty()) {
+    const errorMessages = errors.array().map(error => error.msg);
+    res.status(400).json({ errors: errorMessages });
+  }
+  if(course) {
     if(course.dataValues.userId === user) {
         const updated = await course.update(req.body);
         if(updated) {
           res.status(204).end();
         } else {
-          const errorMessages = errors.array().map(error => error.msg);
-          res.status(400).json({ errors: errorMessages });
+          res.status(403).json({ message: "You are not Authorized" })
         }
     } else {
-      res.status(403).json({ message: "You are not Authorized" })
+      res.status(404).json({ message: "No courses found to Update" })
     }
-  } else {
-    res.status(404).json({ message: "No courses found to Update" })
-  }
+  } 
 }));
 
 /**

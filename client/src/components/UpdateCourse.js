@@ -22,7 +22,7 @@ export default class UpdateCourse extends Component {
   
 
   
-  async componentDidMount() {
+  componentDidMount() {
     const { context } = this.props;
     context.data.courseDetail(this.props.match.params.id).then(course => {
         this.setState({
@@ -50,7 +50,7 @@ export default class UpdateCourse extends Component {
     materialsNeeded,
     errors
     } = this.state;
-    
+   
     return(
       <div className="bounds course--detail">
         <h1>Update Course</h1>
@@ -139,40 +139,40 @@ export default class UpdateCourse extends Component {
   submit = () => {
     const { context } = this.props;
     const { emailAddress, password } = context.authenticatedUser;
+    const courseId = this.props.match.params.id;
     const {
       title,
-      user,
       description,
       estimatedTime,
-      userId,
       materialsNeeded,
+      user
     } = this.state;
 
-    const courseId = this.props.match.params.id;
+    
     const course = {
       title,
       description,
       estimatedTime,
       materialsNeeded,
-      userId,
       user
     };
-
+    
     context.data.updateCourse(courseId, course, emailAddress, password)
     .then( errors => {
-      if (errors && errors.length > 0){
+      if (errors.length > 0){
         this.setState({ errors });
-      } else {
+      } else if (errors.length === 0) {
         this.props.history.push(`/courses/${courseId}`)
+      } else {
+        this.props.history.push('/forbidden')
       }
-      })
+    })
     .catch( err => {
       console.log(err);
       this.props.history.push('/error');
     });
   }
   
-    
 
   cancel = () => {
     const courseId = this.props.match.params.id;
