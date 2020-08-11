@@ -49,7 +49,7 @@ export default () => (
         <Route path="/signout" component={UserSignOutWithContext} />
         <Route path="/error" component={UnhandledError} />
         <Route path='/forbidden' component={Forbidden} />
-        <Route component={NotFound} />
+        <Route path='/notfound' component={NotFound} />
       </Switch>
     </div>
   </Router>

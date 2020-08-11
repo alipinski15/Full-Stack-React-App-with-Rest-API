@@ -39,9 +39,13 @@ export default class UpdateCourse extends Component {
       if (!authUser || authUser.Id !== this.state.user.id){
         this.props.history.push('/forbidden')
       }
+      if (!course) {
+        this.props.history.push('/notfound')
+      }
     })
     .catch((err) => {
       console.log(err);
+      this.props.history.push('/error')
     });
   }
 
@@ -168,7 +172,7 @@ export default class UpdateCourse extends Component {
       } else if (errors.length === 0) {
         this.props.history.push(`/courses/${courseId}`)
       } else {
-        this.props.history.push('/forbidden')
+        this.props.history.push('/notfound')
       }
     })
     .catch( err => {

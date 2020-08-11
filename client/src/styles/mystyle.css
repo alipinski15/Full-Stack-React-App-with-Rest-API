@@ -53,6 +53,11 @@ h1 {
 
 .button {
   background: rgb(11, 172, 139);
+  color: rgb(255,255,255)
+}
+
+.button a {
+  color: rgb(255, 255, 255);
 }
 
 .button:not(.button-secondary):hover {
@@ -78,6 +83,9 @@ a {
   color: rgb(11, 172, 139);
 }
 
+p {
+  color: rgb(11, 172, 139);
+}
 .course--label {
   color: rgb(66, 66, 66);
 }
