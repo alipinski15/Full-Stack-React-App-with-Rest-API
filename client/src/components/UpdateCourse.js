@@ -21,7 +21,6 @@ export default class UpdateCourse extends Component {
   }
   
 
-  
   componentDidMount() {
     const { context } = this.props;
     const authUser = this.props.context.authenticatedUser;
@@ -43,7 +42,6 @@ export default class UpdateCourse extends Component {
     })
     .catch((err) => {
       console.log(err);
-      this.props.history.push('/notfound')
     });
   }
 
