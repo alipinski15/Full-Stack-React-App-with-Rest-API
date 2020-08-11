@@ -1,0 +1,49 @@
+body {
+  background-color: rgb(66, 66, 66);
+}
+
+.header {
+  background-color: rgb(11, 172, 139);
+}
+
+.actions--bar {
+  background-color: rgb(66, 66, 66);
+}
+
+.course--module {
+  background-color: rgb(169,170,169);
+}
+
+/* .course--module.course--link:hover {
+  border-style: solid;
+  border-width: 1.5px;
+  border-color: rgb(11, 172, 139);
+} */
+
+.course--header .course--title {
+  color: rgb(255,255,255);
+}
+
+.course--header .course--label {
+  color: rgb(11, 172, 139);
+}
+
+.course--header p {
+  color: rgb(11, 172, 139);
+}
+
+.course--description p {
+  color: rgb(255,255,255);
+}
+
+.course--stats--list h4 {
+  color: rgb(11, 172, 139);
+}
+
+.course--stats--list >li ul {
+  color: rgb(255, 255, 255);
+}
+
+.course--stats--list h3 {
+  color: rgb(255, 255, 255);
+}

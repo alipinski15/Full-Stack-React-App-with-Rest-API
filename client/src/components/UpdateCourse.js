@@ -24,20 +24,26 @@ export default class UpdateCourse extends Component {
   
   componentDidMount() {
     const { context } = this.props;
+    const authUser = this.props.context.authenticatedUser;
     context.data.courseDetail(this.props.match.params.id).then(course => {
+      if (course) {
         this.setState({
           title: course.title,
           description: course.description,
           estimatedTime: course.estimatedTime,
           materialsNeeded: course.materialsNeeded,
-          user: context.authenticatedUser,
+          user: course.user,
           courseId: course.id,
           userId: course.userId
         });
+      }
+      if (!authUser || authUser.Id !== this.state.user.id){
+        this.props.history.push('/forbidden')
+      }
     })
     .catch((err) => {
       console.log(err);
-      this.props.history.push("/notfound");
+      this.props.history.push('/notfound')
     });
   }
 
@@ -50,7 +56,7 @@ export default class UpdateCourse extends Component {
     materialsNeeded,
     errors
     } = this.state;
-   
+  
     return(
       <div className="bounds course--detail">
         <h1>Update Course</h1>
@@ -122,7 +128,7 @@ export default class UpdateCourse extends Component {
             </Fragment>
           )} />
       </div>
-    )
+    ) 
   }
 
   change = (event) => {
