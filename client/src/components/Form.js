@@ -1,5 +1,9 @@
 import React from 'react';
 
+/**
+ * Creates a form to be used in other pages. Handles the Submit and Cancel buttons. 
+ */
+
 export default (props) => {
   const {
     cancel,
@@ -32,6 +36,13 @@ export default (props) => {
     </div>
   );
 }
+
+/**
+ * 
+ * @param {*} param0 
+ * Checks for any validation errors, if a form is submitted without proper field input,
+ * the validation errors will display. 
+ */
 
 function ErrorsDisplay({ errors }) {
   let errorsDisplay = null;

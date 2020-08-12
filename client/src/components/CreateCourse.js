@@ -23,6 +23,8 @@ export default class CreateCourse extends Component {
     errors: [],
   }
 
+  //Gets the ID & Name from the Authenticated user for use in Creating a course. 
+
   componentDidMount() {
     const { context } = this.props;
     this.setState(() => {
@@ -131,6 +133,10 @@ export default class CreateCourse extends Component {
     });
   }
 
+  /**
+   * Checks if user is Authorized to create a course, if so a course is created.
+   */
+  
   submit = () => {
     const { context } = this.props;
     const { emailAddress, password } = context.authenticatedUser;

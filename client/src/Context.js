@@ -37,7 +37,8 @@ export class Provider extends Component {
     );
   }
 
-  
+  //Looks to the API for user information, and returns an authenticated user.
+
   signIn = async (emailAddress, password) => {
     const user = await this.data.getUser(emailAddress, password);
     if (user !== null) {
@@ -48,11 +49,14 @@ export class Provider extends Component {
           authenticatedUser: user,
         };
       });
+      //Stores the authenticated user in Cookies for up to 1 day.
       Cookies.set('authenticatedUser', JSON.stringify(user), { expires: 1 });
     }
     return user;
   } 
 
+  //Signs user out and sets authenticated user to Null
+  
   signOut = () => {
     this.setState(() => {
       return {

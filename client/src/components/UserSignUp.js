@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Form from './Form';
 
+/**
+ * Creates the Sign Up screen. Allows a user to sign up when all fields and filled
+ * out correctly. 
+ */
+
 export default class UserSignUp extends Component {
   state = {
     firstName: '',
@@ -89,6 +94,11 @@ export default class UserSignUp extends Component {
     });
   }
 
+  /**
+   * When the Sign Up is submitted, Users info is stored in the API creating a new user.
+   * If successful, user is redirected to courses page.
+   */
+  
   submit = () => {
     const { context } = this.props;
     const {

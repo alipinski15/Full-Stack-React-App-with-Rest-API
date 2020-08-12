@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Form from './Form';
 
+/**
+ * Creates the Sign In component, allowing a user to sign in with Email Address &
+ * Password. 
+ */
+
 export default class UserSignIn extends Component {
+
   state = {
     emailAddress: '',
     password: '',
@@ -62,10 +68,15 @@ export default class UserSignIn extends Component {
     });
   }
 
+  /**
+   * Checks for correct email address and password are correct allowing a user
+   * to sign in successfully. 
+   */
+  
   submit = () => {
     const { context } = this.props;
     const { from } = this.props.location.state || { from: { pathname: '/' } };
-    const { emailAddress, password} = this.state;
+    const { emailAddress, password } = this.state;
     context.actions.signIn(emailAddress, password)
     .then( user => {
       if (user === null) {

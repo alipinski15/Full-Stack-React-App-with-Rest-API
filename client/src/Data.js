@@ -1,5 +1,10 @@
 import config from './config';
 
+/**
+ * The Data class uses several functions to communicate to the API. This data is passed throughout 
+ * the App for use.
+ */
+
 export default class Data {
   api(path, method = 'GET', body = null, requiresAuth = false, credentials = null) {
     const url = config.apiBaseUrl + path;
@@ -22,6 +27,8 @@ export default class Data {
     return fetch(url, options);
   }
 
+  //Uses a GET request to the API to retrieve a user.
+
   async getUser(emailAddress, password) {
     const response = await this.api(`/users`, 'GET', null, true, {emailAddress,password});
     if (response.status === 200) {
@@ -35,6 +42,8 @@ export default class Data {
     }
   }
   
+  //Uses POST request to create a User.
+
   async createUser(user) {
     const response = await this.api('/users', 'POST', user);
     if (response.status === 201) {
@@ -50,6 +59,8 @@ export default class Data {
     }
   }
 
+  // Uses a GET request to get course info from the API.
+
   async getCourse() {
     const response = await this.api('/courses', 'GET',);
     if (response.status === 200) {
@@ -63,6 +74,8 @@ export default class Data {
     }
   }
 
+  //Uses a GET request to get course details based the ID of the course requested. 
+
   async courseDetail(id) {
     const response = await this.api(`/courses/${id}`, 'GET',);
     if (response.status === 200) {
@@ -75,6 +88,8 @@ export default class Data {
       throw new Error();
     }
   }
+
+  //Uses a POST request to allow a user with credentials to create a new course and stores it in the API.
 
   async createCourse(course, emailAddress, password) {
     const response = await this.api('/courses/', 'POST', course, true, {emailAddress, password});
@@ -91,6 +106,8 @@ export default class Data {
     }
   }
 
+  //Uses a PUT request to allow an authorized user to Update a course. 
+
   async updateCourse(id, course, emailAddress, password) {
     const response = await this.api(`/courses/${id}`, 'PUT', course, true, {emailAddress, password});
     if (response.status === 204) {
@@ -106,6 +123,8 @@ export default class Data {
     }
   }
 
+  //Allows only an authorized user to delete a course.
+  
   async deleteCourse(id, emailAddress, password) {
     const response = await this.api(`/courses/${id}`, 'DELETE', null, true, {emailAddress, password});
     if (response.status === 204) {

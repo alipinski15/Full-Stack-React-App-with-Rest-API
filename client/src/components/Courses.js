@@ -19,6 +19,10 @@ export default class Courses extends Component {
         courses: response
       })
     })
+    .catch( err => {
+      console.log(err);
+      this.props.history.push('/error');
+    });
   }
 
   /**
