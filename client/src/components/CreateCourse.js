@@ -2,6 +2,10 @@ import React, { Component, Fragment } from 'react';
 import Form from './Form';
 import Data from '../Data';
 
+/**
+ * Creates the Create Course Component
+ */
+
 export default class CreateCourse extends Component {
 
   constructor() {
@@ -29,6 +33,10 @@ export default class CreateCourse extends Component {
     })
   }
 
+  /**
+   * Renders the Page for a user to Create a course.
+   * 
+   */
   render() {
     const {
       title,

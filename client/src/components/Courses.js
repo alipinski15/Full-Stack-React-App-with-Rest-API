@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import Course from './Course';
 import Notfound from './NotFound';
 
+/**
+ * Creates the Course Component
+ */
+
 export default class Courses extends Component {
 
   state = {
@@ -16,6 +20,10 @@ export default class Courses extends Component {
       })
     })
   }
+
+  /**
+   * Maps over each course if it exists, and displays the details on the courses page.
+   */
 
   render() {
     let courses;

@@ -2,8 +2,9 @@ import React, { Component, Fragment } from 'react';
 import Form from './Form';
 
 
-
-
+/**
+ * Creates the Update Course Component
+ */
 
 export default class UpdateCourse extends Component {
   constructor(props) {
@@ -20,6 +21,12 @@ export default class UpdateCourse extends Component {
     }
   }
   
+
+  /**
+   * Checks for course details based on the ID param, if a course exists,
+   * setState is triggered with the requested data. If a user is not Authorized to make changes 
+   * on that course. User is re-routed to Forbidden. If a course is not found, user is redirected to notfound.
+   */
 
   componentDidMount() {
     const { context } = this.props;
@@ -49,6 +56,10 @@ export default class UpdateCourse extends Component {
     });
   }
 
+  /**
+   * Renders the Update Course page if Authorized.
+   */
+  
   render() {
     const { context } = this.props;
     const  {
@@ -143,6 +154,11 @@ export default class UpdateCourse extends Component {
       };
     });
   }
+
+  /**
+   * Allows user to Update a course only it they were the one to Author the course. 
+   * A user cannot Update someone elses Course.
+   */
 
   submit = () => {
     const { context } = this.props;

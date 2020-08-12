@@ -17,7 +17,11 @@ export default class CourseDetail extends Component {
     }
   }
   
-  
+  /**
+   * Getting details about each course based in ID, pulling each attribute to be 
+   * used in state.
+   */
+
   async componentDidMount() {
     const { context } = this.props;
     const { id } = this.props.match.params;
@@ -40,7 +44,11 @@ export default class CourseDetail extends Component {
   }
 
 
-
+  /** 
+   * Renders the Details page and checks for an Authorized user, 
+   * If user is Authorized, the Update and Delete buttons will appear.
+  */
+ 
   render() {
     const {
       title,
@@ -113,6 +121,10 @@ export default class CourseDetail extends Component {
       </div>
     )
   }
+
+  /**
+   * Allows a user to delete a course only if they are Authorized to do so.
+   */
 
   deleteCourse = () => {
     const { context } = this.props;

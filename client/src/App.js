@@ -6,7 +6,7 @@ import {
   Redirect
 } from 'react-router-dom';
 
-
+//Importing components 
 
 import Header from './components/Header'
 import UserSignUp from './components/UserSignUp';
@@ -21,7 +21,9 @@ import withContext from './Context';
 import PrivateRoute  from './PrivateRoute';
 import UnhandledError from './components/UnhandledError'
 import Forbidden from './components/Forbidden'
+import Notfound from './components/NotFound';
 
+/* Variables to be used with Context */
 
 const HeaderWithContext = withContext(Header);
 const UserSignUpWithContext = withContext(UserSignUp);
@@ -50,6 +52,7 @@ export default () => (
         <Route path="/error" component={UnhandledError} />
         <Route path='/forbidden' component={Forbidden} />
         <Route path='/notfound' component={NotFound} />
+        <Route component={Notfound} />
       </Switch>
     </div>
   </Router>
