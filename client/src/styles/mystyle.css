@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
+
 
 body {
   background-color: rgb(66, 66, 66);
-  font-family: "Cairo-Regular", sans-serif;
 }
 
 h1 {
@@ -39,15 +38,20 @@ h1 {
 
 .course--stats--list >li ul {
   color: rgb(255, 255, 255);
+  padding-left: 10px;
 }
 
 .course--stats--list h3 {
   color: rgb(255, 255, 255);
 }
 
+.course--module.course--add--module {
+  padding: 40px;
+}
+
 .button {
   background: rgb(11, 172, 139);
-  color: rgb(255,255,255)
+  color: rgb(255,255,255);
 }
 
 .button a {
@@ -82,7 +86,6 @@ p {
 }
 .course--label {
   color: rgb(66, 66, 66);
-  font-family: "Cairo-Regular";
 }
 
 .course--title {

@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './fonts/Cairo-Regular.ttf';
 import './styles/global.css';
 import './styles/mystyle.css';
 import App from './App';
