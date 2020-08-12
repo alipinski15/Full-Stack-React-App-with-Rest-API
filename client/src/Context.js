@@ -4,6 +4,10 @@ import Cookies from 'js-cookie';
 
 const Context = React.createContext(); 
 
+/**
+ * The Provider component creates the data for Context to be used throughout the App.
+ */
+
 export class Provider extends Component {
 
   state = {
@@ -20,6 +24,8 @@ export class Provider extends Component {
   render() {
     const { authenticatedUser, password } = this.state;
 
+    //Getting data to be passed through value to all Children. 
+    
     const value = {
       authenticatedUser,
       password,
