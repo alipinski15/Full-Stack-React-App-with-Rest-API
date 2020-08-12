@@ -1,3 +1,22 @@
+
+## Full Stack Application using React with Rest API
+
+In this project, I used React to create a client for your existing school database REST API. The full stack application will provide a way for users to administer a school database containing information about courses: users can interact with the database by retrieving a list of courses, viewing detail for a specific course, as well as creating, updating and deleting courses in the database.
+
+In addition, the App will require users to create an account and sign in to make changes to the database. 
+
+To complete this project, I used React, JSX, React Router, React Context API, and Create React App. To create the Rest API, I used Express and Sequelize to create the Data base. 
+
+Used to create:
+
+- JavaScript and JSX to build out the components for the application in a modular fashion.
+- React Router to set up routes.
+- Fetch API or a tool like Axios to fetch data from the REST API.
+- Allow users to sign up and use basic authentication to support users signing in.
+- Added to the supplied CSS to personalize the project.
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
