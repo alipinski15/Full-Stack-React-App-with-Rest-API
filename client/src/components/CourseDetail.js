@@ -2,6 +2,10 @@ import React, { Component, Fragment } from 'react';
 import Markdown from 'react-markdown';
 import { Link } from 'react-router-dom';
 
+/**
+ * Creates the Course Detail Component
+ */
+
 export default class CourseDetail extends Component {
   
   constructor(props) {

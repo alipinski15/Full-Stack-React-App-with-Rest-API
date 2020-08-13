@@ -37,8 +37,8 @@ export default class CreateCourse extends Component {
 
   /**
    * Renders the Page for a user to Create a course.
-   * 
    */
+
   render() {
     const {
       title,
@@ -122,6 +122,8 @@ export default class CreateCourse extends Component {
     )
   }
 
+  //Updates state based on Form field values.
+
   change = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -168,6 +170,8 @@ export default class CreateCourse extends Component {
       this.props.history.push('/error');
     });
   }
+
+  //Redirects user to the Courses page(index) when the cancel button in clicked.
 
   cancel = () => {
     this.props.history.push('/');

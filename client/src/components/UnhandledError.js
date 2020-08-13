@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link }from 'react-router-dom';
 
+/**
+ * Creates a page that is rendered if an Unhandled Error occurs.
+ */
+
 const UnhandledError = () => {
   return(
     <div className="bounds">

@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+/**
+ * Creates the Notfound page that renders when a 404 Error occurs.
+ */
+
 const Notfound = () => {
   return(
     <div className="bounds">

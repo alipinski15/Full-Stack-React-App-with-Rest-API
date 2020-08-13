@@ -57,6 +57,8 @@ export default class UserSignIn extends Component {
     );
   }
 
+  //Updates state based on Form field values.
+
   change = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -94,6 +96,8 @@ export default class UserSignIn extends Component {
     })
   }
 
+  //Redirects to the Courses page(index) when the cancel button is selected.
+  
   cancel = () => {
     this.props.history.push('/')
   }

@@ -17,6 +17,10 @@ export default class UserSignUp extends Component {
     errors: [],
   }
 
+  /**
+   * Renders the Sign Up Form and collects the Form input values. 
+   */
+
   render() {
     const {
       firstName,
@@ -83,6 +87,8 @@ export default class UserSignUp extends Component {
     );
   }
 
+   //Updates state based on Form field values.
+
   change = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -129,7 +135,9 @@ export default class UserSignUp extends Component {
       this.props.history.push('/error');
     });
   }
-
+  
+  //Redirects to the Courses(index) page when the cancel button is selected. 
+  
   cancel = () => {
     this.props.history.push('/');
   }

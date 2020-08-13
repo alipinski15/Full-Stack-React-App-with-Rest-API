@@ -27,6 +27,7 @@ export default class Courses extends Component {
 
   /**
    * Maps over each course if it exists, and displays the details on the courses page.
+   * If no courses exist, redirects to Notfound.
    */
 
   render() {

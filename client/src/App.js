@@ -6,7 +6,7 @@ import {
   Redirect
 } from 'react-router-dom';
 
-//Importing components 
+//Importing components for routing.
 
 import Header from './components/Header'
 import UserSignUp from './components/UserSignUp';
