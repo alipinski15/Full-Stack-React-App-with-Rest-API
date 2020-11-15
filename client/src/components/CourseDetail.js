@@ -60,7 +60,7 @@ export default class CourseDetail extends Component {
       authenticatedUser,
       user
     } = this.state
-    
+    console.log(1 == '1');
     return (
       <div>
         <div className="actions--bar">
